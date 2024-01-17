@@ -1,0 +1,38 @@
+apiVersion: apps.gitlab.com/v1beta1
+kind: GitLab
+metadata:
+  name: gitlab
+  annotations:
+    argocd.argoproj.io/sync-wave: "400"
+spec:
+  chart:
+    version: {{ .Values.chartVersion }}
+    values:
+      postgresql:
+        install: false
+      global:
+        edition: ce
+        kas:
+          enabled: false
+        psql:
+          host: {{ .Values.postgresql.host }}
+          password:
+            useSecret: true
+            secret: {{ .Values.postgresql.secretPassword }}
+            key: {{ .Values.postgresql.keyPassword }}
+          port: {{ .Values.postgresql.port }}
+          database: {{ .Values.postgresql.database }}
+          username: {{ .Values.postgresql.username }}
+        hosts:
+          https: false
+          domain: {{ .Values.domain }}
+        nginx-ingress:
+          enabled: false
+        ingress:
+          configureCertmanager: true
+          class: {{ .Values.ingressClass }}
+          annotations:
+            cert-manager.io/cluster-issuer: "my-cluster-issuer"
+            nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      certmanager-issuer:
+        email: {{ .Values.email }}

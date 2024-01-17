@@ -1,0 +1,21 @@
+# Default values for gitlab.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+chartVersion: 7.7.0
+ingressClass: ingress-nginx-v2
+domain: aws.test.com
+
+runnerToken: <my-token>
+
+# Postgres on the same k8s cluster
+postgresql:
+  host: pgsql.postgresql.svc.cluster.local
+  secretPassword: gitlab-postgresql-password
+  keyPassword: password
+  base64Password: <b64-pwd>
+  port: 5432
+  database: gitlab
+  username: gitlab
+
+email: claudio.regazzoni@test.com

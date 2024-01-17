@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  labels:
+    res-it/commessa: RSYGICT
+  name: gitlab
+spec: {}
