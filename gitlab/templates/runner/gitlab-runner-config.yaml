@@ -24,9 +24,9 @@ data:
         Path = ""
         Shared = false
         [runners.cache.s3]
-          ServerAddress = "minio.aws.test.com"
-          AccessKey = <my-access-key>
-          SecretKey = <my-secret-key>
+          ServerAddress = "{{ .Values.minio.serverAddress }}"
+          AccessKey = "{{ .Values.minio.accessKey_b64 | b64dec }}"
+          SecretKey = "{{ .Values.minio.secretKey_b64 | b64dec }}"
           BucketName = "runner-cache"
           Insecure = false
           ServerSideEncryption = "S3"

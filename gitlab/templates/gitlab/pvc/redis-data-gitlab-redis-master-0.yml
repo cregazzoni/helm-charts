@@ -14,6 +14,6 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 8Gi
-  storageClassName: gp2
+      storage: {{ .Values.pvc.redis.size }}
+  storageClassName: {{ .Values.pvc.redis.storageClass }}
   volumeMode: Filesystem

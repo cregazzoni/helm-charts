@@ -18,4 +18,23 @@ postgresql:
   database: gitlab
   username: gitlab
 
+minio:
+  serverAddress: minio.aws.test.com
+  accessKey_b64: <b64_code>
+  secretKey_b64: <b64_code>
+
+pvc:
+  minio:
+    storageClass: gp2
+    size: 250Gi
+  prometheus:
+    storageClass: gp2
+    size: 8Gi
+  redis:
+    storageClass: gp2
+    size: 8Gi
+  gitaly:
+    storageClass: gp2
+    size: 150Gi
+
 email: claudio.regazzoni@test.com

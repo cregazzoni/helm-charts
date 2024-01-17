@@ -16,6 +16,6 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 8Gi
-  storageClassName: gp2
+      storage: {{ .Values.pvc.prometheus.size }}
+  storageClassName: {{ .Values.pvc.prometheus.storageClass }}
   volumeMode: Filesystem

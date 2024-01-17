@@ -13,6 +13,6 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 150Gi
-  storageClassName: gp2
+      storage: {{ .Values.pvc.gitaly.size }}
+  storageClassName: {{ .Values.pvc.gitaly.storageClass }}
   volumeMode: Filesystem
